@@ -1,12 +1,12 @@
-from ipaddress import ip_address
-from socket import socket
+from socket import *
+from telnetlib import IP
 from flask import Flask, jsonify, render_template
 
 app = Flask(__name__)
 
 def fetchDetails():
-    hostname = socket.getcompname()
-    ip = socket.gethostbyname(hostname)
+    hostname = gethostname()
+    ip = gethostbyname(hostname)
     return str(hostname), str(ip)
 
 @app.route("/")
